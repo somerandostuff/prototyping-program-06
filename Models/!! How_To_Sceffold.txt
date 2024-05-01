@@ -1,0 +1,7 @@
+﻿After installing the needed packages, type this in the Package Manager Console:
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=(Your database name);Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+OR (if you had the connection string in the appsettings.json):
+
+Scaffold-DbContext "Name=ConnectionStrings:(Your database name)" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
