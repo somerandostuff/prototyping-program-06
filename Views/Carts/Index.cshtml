@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Giỏ hàng của bạn";
+}
+@{
+    var _Item = ViewBag.CartCurrent as List<Item>;
+}
+<h1>Giỏ hàng của bạn</h1>
+<div class="row">
+    <table class="table table-hover table-bordered">
+        <thead class="bg-info bg-opacity-25 border-primary font-weight-bold">
+            <tr>
+                <td class="b">Lựa chọn</td>
+                <td>ID mặt hàng</td>
+                <td>Tên</td>
+                <td>Giá</td>
+                <td>Số lượng</td>
+                <td>Tổng chi</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (_Item != null)
+            {
+                @foreach (var item in _Item)
+                {
+                    if (item != null && item.Product != null)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-danger" asp-controller="Carts" asp-action="DeleteItem" asp-route-ItemID="@item.Product.ProductId">Loại bỏ</a>
+                            </td>
+                            <td>
+                                @item.Product.ProductId
+                            </td>
+                            <td>@item.Product.ProductName</td>
+                            <td>@item.Product.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>@(item.Product.Price * item.Quantity)</td>
+                        </tr>
+                    }
+                }
+
+            }
+        </tbody>
+        <tfoot class="font-weight-bold">
+            <tr>
+                <td colspan="5" style=" text-align: right;">Tổng chi tất cả</td>
+                <td>@ViewBag.Total</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="row">
+    <a class="btn btn-success" asp-controller="ProductList" asp-action="Index">Tiếp tục mua hàng</a>
+</div>
+

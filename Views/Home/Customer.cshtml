@@ -1,0 +1,10 @@
+﻿@{
+	ViewData["Title"] = "Chào mừng";
+}
+
+
+<div class="text-center">
+	<h1>Chào mừng, @ViewBag.NameCustomer!</h1>
+	<p>Nhấn nút ở dưới để xem các mặt hàng mới nhất.</p>
+	<a class="btn btn-primary" asp-controller="ProductList" asp-action="Index">Xem DS sản phẩm</a>
+</div>

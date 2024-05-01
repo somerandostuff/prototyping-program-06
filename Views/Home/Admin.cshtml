@@ -1,0 +1,13 @@
+﻿@{
+	ViewData["Title"] = "Chào mừng";
+}
+
+
+<div class="text-center">
+	<h1>Chào mừng, @ViewBag.NameAdmin!</h1>
+	<p>Hãy nhấn các nút ở bên dưới để truy cập vào hệ thống.</p>
+	<a class="btn btn-primary" asp-controller="Admins" asp-action="Index">Quản lý tài khoản QTV</a><br /><br />
+	<a class="btn btn-warning" asp-controller="Categories" asp-action="Index">Quản lý danh mục</a><br /><br />
+	<a class="btn btn-secondary" asp-controller="Customers" asp-action="Index">Quản lý tài khoản khách hàng</a><br /><br />
+	<a class="btn btn-success" asp-controller="Products" asp-action="Index">Quản lý hàng hóa</a>
+</div>

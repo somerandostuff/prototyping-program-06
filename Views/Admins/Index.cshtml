@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Assignment_2_NEW.Models.Admin>
+
+@{
+    ViewData["Title"] = "Các TK QTV";
+}
+
+<h1>Danh sách TK QTV</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Tạo mới</a>
+</p>
+<table class="table table-hover table-bordered">
+    <thead class="bg-info bg-opacity-25 border-primary font-weight-bold">
+        <tr>
+            <th>
+                ID tài khoản
+            </th>
+            <th>
+                Tên
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminRealName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminDob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminEmail)
+            </td>
+            <td>
+                @{for (int i = 0; i < item.AdminPassword.Length; i++)
+                    {
+                            <span>*</span>
+                    }}
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.AdminId">Sửa</a>
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.AdminId">Chi tiết</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.AdminId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Danh sách hàng";
+}
+
+@{
+    var Products = ViewBag.Products as List<Product>;
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã sản phẩm
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th>
+                Danh mục
+            </th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Products != null)
+        {
+            @foreach (var item in Products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryId)
+                    </td>
+                    <td>
+                        <a asp-controller="Carts" asp-action="Buy" asp-route-ItemID="@item.ProductId">Buy Now</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

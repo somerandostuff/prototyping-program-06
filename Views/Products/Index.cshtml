@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Assignment_2_NEW.Models.Product>
+
+@{
+    ViewData["Title"] = "Danh sách mặt hàng";
+}
+
+<h1>Danh sách mặt hàng</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID mặt hàng
+            </th>
+            <th>
+                Tên hàng
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                ID thể loại
+            </th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryId)
+            </td>
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ProductId">Sửa</a>
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.ProductId">Chi tiết</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ProductId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

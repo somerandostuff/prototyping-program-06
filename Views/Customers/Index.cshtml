@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Assignment_2_NEW.Models.Customer>
+
+@{
+    ViewData["Title"] = "Danh sách KH";
+}
+
+<h1>Danh sách khách hàng</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Tạo mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID khách hàng
+            </th>
+            <th>
+                Tên
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerRealName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerDob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerEmail)
+            </td>
+            <td>
+                    @{
+                        for (int i = 0; i < item.CustomerPassword.Length; i++)
+                        {
+                            <span>*</span>
+                        }
+                    }
+            </td>
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.CustomerId">Sửa</a>
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.CustomerId">Chi tiết</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CustomerId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

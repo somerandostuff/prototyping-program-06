@@ -1,0 +1,27 @@
+﻿@model Assignment_2_NEW.Models.Customer
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="text-center">
+    <h1 class="display-4">Đăng nhập</h1>
+    <a asp-action="Admin">Đăng nhập với tư cách Admin</a>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form asp-action="Customer">
+        <div class="form-group">
+            <label asp-for="CustomerId" class="control-label">Tên tài khoản</label>
+            <input asp-for="CustomerId" type="text" class="form-control text-center" id="CustomerId">
+            <span asp-validation-for="CustomerId" class="text-danger"></span><br />
+        </div>
+        <div class="form-group">
+            <label asp-for="CustomerPassword" class="control-label">Mật khẩu</label>
+            <input asp-for="CustomerPassword" type="password" class="form-control text-center" id="CustomerPassword">
+            <span asp-validation-for="CustomerPassword" class="text-danger"></span><br />
+        </div>
+        <div class="form-group">
+            <button type="submit" value="Customer" class="btn btn-primary">Đăng nhập!</button>
+        </div>
+    </form>
+
+</div>
